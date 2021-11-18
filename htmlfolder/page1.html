@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color: rgba(0, 0, 0, 0.864);color:rgb(255, 255, 255)">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgba(255, 255, 255, 0);"> 
+        <a class="navbar-brand" href="#">Phone Book</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+      <form><br><h2>Add your contact</h2></form>
+    <form action="add" method="POST" style="text-align: center;" style="background-color:rgb(red, green, blue)">
+        {%csrf_token%}
+        {{form.as_p}}
+        <input type='submit' value="Submit">
+        <p>{{msg}}</p>
+        <h3>delete contact</h3>
+        <button style="text-align: center;"><a  href="{% url 'dele' %}">click to delete</a></button>
+    </form>
+    <h3>Edit contact here</h3>
+    <button style="text-align: center;" ><a href="{% url 'update' %}">Edit contact</a></button>
+
+    <form action="showcontact"  method="POST" style="text-align: center;">
+    {%csrf_token%}
+    <button style="text-align: right;">view contacts </button>
+    </form>
+   <div> <table class="table table-bordered">
+    <thead style="color: aliceblue;">
+        <tr>
+            <th>Name</th>
+            <th>Contact Number</th>
+         
+        </tr>
+    </thead>
+    <tbody style="color: aliceblue;">
+        {% for i in data %}
+        <tr>
+            <td>{{i.name}}</td>
+            <td>{{i.number}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+   </div>
+</body>
+  
+</body>
+</html>

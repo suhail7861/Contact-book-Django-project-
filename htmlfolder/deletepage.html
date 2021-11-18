@@ -1,0 +1,7 @@
+<form action="del" method="POST">
+    {%csrf_token%}
+    Name to delete :<input type="text" name="name"><br>
+    <input type="submit" value="Delete"><br>
+    {{msg}}
+
+</form>
